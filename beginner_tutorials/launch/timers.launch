@@ -1,0 +1,5 @@
+<launch>
+
+    <node pkg="beginner_tutorials" name="timers" type="timers" launch-prefix="xterm -e"/>
+
+</launch>

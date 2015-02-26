@@ -1,0 +1,8 @@
+<launch>
+
+    <node pkg="beginner_tutorials" name="listener" type="listener" launch-prefix="xterm -e"/>
+    <node pkg="beginner_tutorials" name="listener_class" type="listener_class" launch-prefix="xterm -e"/>
+    <node pkg="beginner_tutorials" name="listener_with_userdata" type="listener_with_userdata" launch-prefix="xterm -e"/>
+    <node pkg="beginner_tutorials" name="talker" type="talker" launch-prefix="xterm -e"/>
+
+</launch>
