@@ -1,1 +1,3 @@
-# ros-examples
+# ros_examples
+
+Various ROS examples.
