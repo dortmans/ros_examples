@@ -1,0 +1,93 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot" >
+
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+  <xacro:property name="base_radius" value="0.165" />
+  <xacro:property name="base_height" value="0.02" />
+  <xacro:property name="wheel_radius" value="0.05" />
+  <xacro:property name="wheel_height" value="0.02" />
+  <xacro:property name="kinect_support_height" value="0.23" />
+
+  <link name="base_footprint" />
+
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_footprint" />
+    <child link="base_link" />
+    <origin xyz="0 0 ${wheel_radius}" rpy="0 0 0" />
+  </joint>
+  
+  <link name="base_link">
+    <visual>
+	  <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="${base_radius}" length="${base_height}" />
+      </geometry>
+	  <material name="grey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="left_wheel_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="left_wheel" />
+    <origin xyz="0 ${base_radius-wheel_height} 0" rpy="0 0 0" />
+  </joint>
+
+  <link name="left_wheel">
+    <visual>
+	  <origin xyz="0 0 0" rpy="${M_PI/2} 0 0" />
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_height}" />
+      </geometry>
+	  <material name="blue">
+        <color rgba="0 0 0.7 1.0"/>
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="right_wheel_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="right_wheel" />
+    <origin xyz="0 -${base_radius-wheel_height} 0" rpy="0 0 0" />
+  </joint>
+  
+  <link name="right_wheel">
+    <visual>
+	  <origin xyz="0 0 0" rpy="${M_PI/2} 0 0" />
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_height}" />
+      </geometry>
+	  <material name="blue">
+        <color rgba="0 0 0.7 1.0"/>
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="kinect_support_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="kinect_support" />
+    <origin xyz="-0.118 0 ${base_height/2}" rpy="0 0 0" />
+  </joint>
+
+  <link name="kinect_support">
+    <visual>
+      <origin xyz="0 0 ${kinect_support_height/2}" rpy="0 0 0" />
+      <geometry>
+        <box size="0.05 0.05 ${kinect_support_height}" />
+      </geometry>
+      <material name="grey_blue">
+        <color rgba="0.4 0.4 1.0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <xacro:include filename="$(find turtlebot_description)/urdf/sensors/kinect.urdf.xacro"/>
+  <sensor_kinect parent="base_link"/>
+
+  <include filename="$(find turtlebot_arm_description)/urdf/arm.xacro" />
+  <turtlebot_arm parent="base_link" color="white" gripper_color="green"
+    joints_vlimit="${M_PI/2}" pan_llimit="-${M_PI/2}" pan_ulimit="${M_PI/2}">
+    <origin xyz="0.12 0 0.02"/>
+  </turtlebot_arm>
+          
+</robot>

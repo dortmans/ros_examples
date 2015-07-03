@@ -1,0 +1,19 @@
+<robot name="block">
+
+  <link name="world"/>
+  
+  <joint name="world_block_joint" type="fixed">
+    <parent link="world"/>
+    <child link="block"/>
+  </joint> 
+
+  <link name="block">
+    <visual>
+      <geometry>
+        <box size="0.8 0.8 0.8"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+    </visual>
+  </link>
+
+ </robot>
