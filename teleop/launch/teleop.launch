@@ -1,0 +1,21 @@
+<launch>
+
+  <arg name="cmd_vel" default="/turtle1/cmd_vel" />
+  <arg name="teleop_config" default="$(find teleop)/config/teleop.yaml" />
+  <arg name="joy_dev" default="/dev/input/js0" />
+  
+  <node pkg="turtlesim" type="turtlesim_node" name="sim"/>
+
+  <node respawn="true" pkg="joy"
+        type="joy_node" name="turtle_joy" >
+    <param name="dev" type="string" value="$(arg joy_dev)" />
+    <param name="deadzone" value="0.12" />
+  </node>
+
+  <rosparam file="$(arg teleop_config)" command="load" />
+  <node pkg="joy_teleop" type="joy_teleop.py" name="joy_teleop">
+    <remap from="cmd_vel" to="$(arg cmd_vel)" />
+  </node>
+  
+
+</launch>
