@@ -3,31 +3,40 @@ teleop:
     type: topic
     message_type: geometry_msgs/Twist
     topic_name: cmd_vel
+    deadman_buttons: [4]
     axis_mappings:
       -
-        axis: 0
+        axis: 1
         target: linear.x
         scale: 1.0
       -
-        axis: 1
+        axis: 2
         target: linear.y
         scale: 1.0
       -
-        axis: 2
+        axis: 0
         target: angular.z
         scale: 1.0
   stop:
     type: topic
     message_type: geometry_msgs/Twist
     topic_name: cmd_vel
-    deadman_buttons: [0, 1, 2, 3]
+    deadman_buttons: [0]
     message_value:
       -
         target: linear.x
         value: 0.0
       -
-        target: angular.z
-        value: 0.0
-      -
         target: linear.y
         value: 0.0
+      -
+        target: angular.z
+        value: 0.0
+  clear:
+    type: service
+    service_name: /clear
+    buttons: [6]
+  reset:
+    type: service
+    service_name: /reset
+    buttons: [7]

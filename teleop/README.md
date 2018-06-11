@@ -1,8 +1,7 @@
 # teleop
 
-Teleop example using joystick.
-
-Works for Microsoft Xbox 360 Wired joystick or compatible, like Logitech F310 (used in XInput Mode).
+Teleop using a gamepad.
+Works for Microsoft Xbox 360 (wired) gamepad or compatible, like Logitech F310 (used in XInput Mode).
 
 ## Installation
 
@@ -22,10 +21,12 @@ sudo apt-get install ros-kinetic-joy-teleop
 
 ## Launch
 
-launch teleop example as follows:
+Launch teleop example as follows:
 ```
-roslaunch teleop teleop.launch
+roslaunch teleop teleop.launch joy_dev:=1
 ```
+
+Use the correct value for joy_dev (0 or 1).
 
 ## References
 

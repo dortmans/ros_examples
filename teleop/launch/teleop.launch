@@ -2,13 +2,13 @@
 
   <arg name="cmd_vel" default="/turtle1/cmd_vel" />
   <arg name="teleop_config" default="$(find teleop)/config/teleop.yaml" />
-  <arg name="joy_dev" default="/dev/input/js0" />
+  <arg name="joy_dev" default="0" />
   
   <node pkg="turtlesim" type="turtlesim_node" name="sim"/>
 
   <node respawn="true" pkg="joy"
         type="joy_node" name="turtle_joy" >
-    <param name="dev" type="string" value="$(arg joy_dev)" />
+    <param name="dev" type="string" value="/dev/input/js$(arg joy_dev)" />
     <param name="deadzone" value="0.12" />
   </node>
 
