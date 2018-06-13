@@ -8,6 +8,7 @@ Applicable Gamepads:
 - [Microsoft Xbox360](https://en.wikipedia.org/wiki/Xbox_360_controller)
 - [Logitech F310](https://www.logitechg.com/en-us/product/f310-gamepad) (in XInput mode)
 
+![Xbox360 controller[(Xbox360controller.png)
 
 ## Buttons
 
