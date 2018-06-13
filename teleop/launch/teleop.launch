@@ -4,7 +4,9 @@
   <arg name="teleop_config" default="$(find teleop)/config/teleop.yaml" />
   <arg name="joy_dev" default="0" />
   
-  <node pkg="turtlesim" type="turtlesim_node" name="sim"/>
+  <node pkg="turtlesim" type="turtlesim_node" name="turtlesim"/>
+  
+  <node pkg="turtle_actionlib" type="shape_server" name="shape_server"/>
 
   <node respawn="true" pkg="joy"
         type="joy_node" name="turtle_joy" >

@@ -1,11 +1,22 @@
 # teleop
 
-Teleop using a gamepad.
-Works for Microsoft Xbox 360 (wired) gamepad or compatible, like Logitech F310 (used in XInput Mode).
+Teleop demo using a gamepad.
+Works for Microsoft Xbox 360 (wired) gamepad or compatible, like Logitech F310 (when used in XInput Mode).
 
 ## Installation
 
-Install ros_examples package if not yet done.
+Clone this ros_examples package if not yet done.
+```
+cd ~/catkin_ws/src
+git clone https://github.com/dortmans/ros_examples.git
+cd ~/catkin_ws
+catkin_make
+```
+
+Install turtle_actionlib package.
+```
+sudo apt-get install ros-kinetic-turtle-actionlib
+```
 
 Install joystick driver.
 ```

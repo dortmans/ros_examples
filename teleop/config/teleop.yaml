@@ -2,16 +2,12 @@ teleop:
   move:
     type: topic
     message_type: geometry_msgs/Twist
-    topic_name: cmd_vel
+    topic_name: /cmd_vel
     deadman_buttons: [4]
     axis_mappings:
       -
         axis: 1
         target: linear.x
-        scale: 1.0
-      -
-        axis: 2
-        target: linear.y
         scale: 1.0
       -
         axis: 0
@@ -20,7 +16,7 @@ teleop:
   stop:
     type: topic
     message_type: geometry_msgs/Twist
-    topic_name: cmd_vel
+    topic_name: /cmd_vel
     deadman_buttons: [0]
     message_value:
       -
@@ -40,3 +36,26 @@ teleop:
     type: service
     service_name: /reset
     buttons: [7]
+  setpen_off:
+    type: service
+    service_name: /turtle1/set_pen
+    buttons: [0]
+    service_request:
+      'off': 1
+  setpen_on:
+    type: service
+    service_name: /turtle1/set_pen
+    buttons: [1]
+    service_request:
+      r: 1
+      g: 1
+      b: 1
+      width: 3
+      'off': 0      
+  draw_shape:
+    type: action
+    action_name: /shape_server
+    action_goal:
+      edges: 5
+      radius: 1.0
+    buttons: [2]
