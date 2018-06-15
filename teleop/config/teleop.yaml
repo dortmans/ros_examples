@@ -2,50 +2,47 @@ teleop:
   move:
     type: topic
     message_type: geometry_msgs/Twist
-    topic_name: /cmd_vel
-    deadman_buttons: [4]
+    topic_name: /turtle1/cmd_vel
+    deadman_buttons: []
     axis_mappings:
       -
-        axis: 1
+        axis: 1 # LeftTrigger Y
         target: linear.x
         scale: 1.0
       -
-        axis: 0
+        axis: 0 # LeftTrigger X
         target: angular.z
         scale: 1.0
-  stop:
+  turn:
     type: topic
     message_type: geometry_msgs/Twist
-    topic_name: /cmd_vel
-    deadman_buttons: [0]
+    topic_name: /turtle1/cmd_vel
+    deadman_buttons: [4] # LB
     message_value:
       -
         target: linear.x
         value: 0.0
       -
-        target: linear.y
-        value: 0.0
-      -
         target: angular.z
-        value: 0.0
+        value: 1.0
   clear:
     type: service
     service_name: /clear
-    buttons: [6]
+    buttons: [6] # BACK
   reset:
     type: service
     service_name: /reset
-    buttons: [7]
+    buttons: [7] # START
   setpen_off:
     type: service
     service_name: /turtle1/set_pen
-    buttons: [0]
+    buttons: [0] # A
     service_request:
       'off': 1
   setpen_on:
     type: service
     service_name: /turtle1/set_pen
-    buttons: [1]
+    buttons: [1] # B
     service_request:
       r: 1
       g: 1
@@ -58,4 +55,4 @@ teleop:
     action_goal:
       edges: 5
       radius: 1.0
-    buttons: [2]
+    buttons: [2] # X

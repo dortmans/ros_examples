@@ -1,23 +1,29 @@
 <launch>
 
-  <arg name="cmd_vel" default="/turtle1/cmd_vel" />
   <arg name="teleop_config" default="$(find teleop)/config/teleop.yaml" />
   <arg name="joy_dev" default="0" />
-  
-  <node pkg="turtlesim" type="turtlesim_node" name="turtlesim"/>
-  
-  <node pkg="turtle_actionlib" type="shape_server" name="shape_server"/>
+  <arg name="cmd_vel" default="/turtle1/cmd_vel" />
+  <arg name="throttle_rate" default="30" />
 
-  <node respawn="true" pkg="joy"
-        type="joy_node" name="turtle_joy" >
+  <!-- Gamepad driver outputs buttons and axis status on /joy -->  
+  <node respawn="true" pkg="joy" type="joy_node" name="gamepad_joy" >
     <param name="dev" type="string" value="/dev/input/js$(arg joy_dev)" />
     <param name="deadzone" value="0.12" />
+    <param name="autorepeat_rate" value="5" />
   </node>
 
+  <!-- Teleop node reads /joy and acts as specified in teleop config -->
   <rosparam file="$(arg teleop_config)" command="load" />
   <node pkg="joy_teleop" type="joy_teleop.py" name="joy_teleop">
     <remap from="cmd_vel" to="$(arg cmd_vel)" />
   </node>
-  
 
+  <!-- Shape drawing action server --> 
+  <node pkg="turtle_actionlib" type="shape_server" name="shape_server">
+  	<!--<remap from="$(arg cmd_vel)" to="cmd_vel" />-->
+  </node>
+
+  <!-- The Turtle in its habitat, moves and draws with its pen -->
+  <node pkg="turtlesim" type="turtlesim_node" name="turtlesim"/>  
+  
 </launch>
