@@ -13,24 +13,19 @@ cd ~/catkin_ws
 catkin_make
 ```
 
-Install turtle_actionlib package.
-```
-sudo apt-get install ros-kinetic-turtle-actionlib
-```
-
-Install joystick driver.
+Install gamepad / joystick driver.
 ```
 sudo apt-get install ros-kinetic-joy
 sudo chmod a+rw /dev/input/js*
 ```
-Your joystick will be any of the js devices in /dev/input directory. i.e. /dev/input/js0 or /dev/input/js1.
+Your joystick will be any of the js devices in `/dev/input` directory. i.e. `/dev/input/js0` or `/dev/input/js1`. On certain laptops the js0 device is already used for the built-in acceleration sensor.
 
 Install joy_teleop package:
 ```
 sudo apt-get install ros-kinetic-joy-teleop
 ```
 
-Finally install robot (turtle) simulator packages:
+Finally install turtle simulator packages:
 ```
 sudo apt-get install ros-kinetic-turtlesim
 sudo apt-get install ros-kinetic-turtle-actionlib
