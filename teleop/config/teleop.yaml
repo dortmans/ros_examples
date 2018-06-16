@@ -55,4 +55,4 @@ teleop:
     action_goal:
       edges: 5
       radius: 1.0
-    buttons: [2] # X
+    buttons: [5] # RB
