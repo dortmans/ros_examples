@@ -1,0 +1,17 @@
+<launch>
+
+  <arg name="joy_dev" default="0" />
+  <arg name="teleop_config" default="$(find teleop)/config/teleop_turtlebot.yaml" />
+
+  <!-- Gamepad driver outputs buttons and axis status on /joy -->  
+  <node respawn="true" pkg="joy" type="joy_node" name="gamepad_joy" >
+    <param name="dev" type="string" value="/dev/input/js$(arg joy_dev)" />
+    <param name="deadzone" value="0.12" />
+    <param name="autorepeat_rate" value="5" />
+  </node>
+
+  <!-- Teleop node reads /joy and acts as specified in teleop config -->
+  <rosparam file="$(arg teleop_config)" command="load" />
+  <node pkg="joy_teleop" type="joy_teleop.py" name="joy_teleop" />
+ 
+</launch>
