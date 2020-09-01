@@ -6,11 +6,11 @@ teleop:
     deadman_buttons: []
     axis_mappings:
       -
-        axis: 1 # LeftTrigger Y
+        axis: 1 # LeftStick Y
         target: linear.x
         scale: 0.22
       -
-        axis: 0 # LeftTrigger X
+        axis: 0 # LeftStick X
         target: angular.z
         scale: 2.84
 
